@@ -11,11 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
-
 @Entity
-@JsonIdentityInfo(generator = PropertyGenerator.class, property = "reservationId")
 public class Reservation {
 
 	@Id
