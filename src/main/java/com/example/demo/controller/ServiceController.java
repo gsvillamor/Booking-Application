@@ -65,9 +65,8 @@ public class ServiceController {
 	}
 
 	@GetMapping("/{serviceId}")
-	public TravelService getServiceById(@PathVariable("customerId") int customerId) {
-
-		return service.findById(customerId);
+	public TravelService getServiceById(@PathVariable("serviceId") int serviceId) {
+		return service.findById(serviceId);
 	}
 
 	@PutMapping("/{serviceId}")

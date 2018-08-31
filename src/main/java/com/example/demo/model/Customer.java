@@ -1,11 +1,20 @@
 package com.example.demo.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
 
 @Entity
+@JsonIdentityInfo(generator = PropertyGenerator.class, property = "customerId")
 public class Customer {
 
 	@Id
@@ -13,6 +22,18 @@ public class Customer {
 	private int customerId;
 	private String firstName;
 	private String lastName;
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable
+	private List<Reservation> reservation;
+
+	public List<Reservation> getReservation() {
+		return reservation;
+	}
+
+	public void setReservation(List<Reservation> reservation) {
+		this.reservation = reservation;
+	}
 
 	public int getCustomerId() {
 		return customerId;

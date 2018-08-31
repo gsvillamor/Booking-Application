@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
@@ -19,11 +21,12 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int reservationId;
-	@OneToMany
+	@ManyToMany(mappedBy = "reservation")
 	private List<TravelService> availedServiceList;
 	private LocalDate departureDate;
-	@OneToMany
-	private List<Customer> customers;
+	@ManyToOne
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 
 	public int getReservationId() {
 		return reservationId;
@@ -49,12 +52,12 @@ public class Reservation {
 		this.departureDate = departureDate;
 	}
 
-	public List<Customer> getCustomers() {
-		return customers;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 }
