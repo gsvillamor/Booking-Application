@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.Image;
 import com.example.demo.model.TravelService;

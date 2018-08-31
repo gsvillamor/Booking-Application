@@ -21,7 +21,7 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int reservationId;
-	@ManyToMany(mappedBy = "reservation")
+	@ManyToMany
 	private List<TravelService> availedServiceList;
 	private LocalDate departureDate;
 	@ManyToOne

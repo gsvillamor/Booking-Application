@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.model.Customer;
 import com.example.demo.repository.CustomerRepository;

@@ -34,17 +34,17 @@ public class TravelPackageController {
 	}
 
 	@GetMapping
-	public List<TravelPackage> getAllReservations() {
+	public List<TravelPackage> getAllTravelPackages() {
 		return (List<TravelPackage>) travelPackageService.findAll();
 	}
 
 	@PutMapping
-	public TravelPackage editReservation(@RequestBody TravelPackage travelPackage) {
+	public TravelPackage editTravelPackage(@RequestBody TravelPackage travelPackage) {
 		return travelPackageService.save(travelPackage);
 	}
 
 	@PostMapping
-	public TravelPackage addReservation(@RequestBody TravelPackage travelPackage) {
+	public TravelPackage addTravelPackage(@RequestBody TravelPackage travelPackage) {
 		travelPackage = travelPackageService.save(travelPackage);
 
 		travelService.setContents(travelPackage, travelService, imageService);
@@ -53,7 +53,7 @@ public class TravelPackageController {
 	}
 
 	@DeleteMapping
-	public void deleteReservations(@RequestParam("travelPackageId") List<Integer> travelPackageIds) {
+	public void deleteTravelPackages(@RequestParam("travelPackageId") List<Integer> travelPackageIds) {
 		for (int id : travelPackageIds) {
 			travelPackageService.deleteServices(imageService, travelService, id);
 			travelPackageService.delete(travelPackageService.findById(id));
@@ -61,12 +61,12 @@ public class TravelPackageController {
 	}
 
 	@GetMapping("/{travelPackageId}")
-	public TravelPackage getReservationById(@PathVariable("travelPackageId") int travelPackageId) {
+	public TravelPackage getTravelPackageById(@PathVariable("travelPackageId") int travelPackageId) {
 		return travelPackageService.findById(travelPackageId);
 	}
 
 	@PutMapping("/{travelPackageId}")
-	public TravelPackage editReservationDetails(@PathVariable("travelPackageId") int travelPackageId,
+	public TravelPackage editTravelPackageDetails(@PathVariable("travelPackageId") int travelPackageId,
 			@RequestBody TravelPackage travelPackage) {
 		travelPackage.setTravelPackageId(travelPackageId);
 		return travelPackageService.save(travelPackage);
